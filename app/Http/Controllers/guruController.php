@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Guru;
 
-class guruController extends Controller
+class GuruController extends Controller
 {
     public function index(Request $request)
     {
@@ -29,7 +29,7 @@ class guruController extends Controller
      */
     public function create()
     {
-        return view('buku.create');
+        return view('guru.create');
     }
 
     /**
@@ -41,15 +41,15 @@ class guruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul'        => 'required',
-            'tahun_terbit' => 'required',
+            'nama'        => 'required',
+            'mengajar' => 'required',
         ]);
 
-        Buku::create($request->all());
+        Guru::create($request->all());
 
         return redirect()
-                ->route('buku.index')
-                ->with('success','Buku created successfully.');
+                ->route('guru.index')
+                ->with('success','guru created successfully.');
     }
 
     /**
@@ -58,9 +58,9 @@ class guruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Buku $buku)
+    public function show(guru $guru)
     {
-        return view('buku.show', compact('buku'));
+        return view('guru.show', compact('guru'));
     }
 
     /**
@@ -69,9 +69,9 @@ class guruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Buku $buku)
+    public function edit(Guru $guru)
     {
-        return view('buku.edit', compact('buku'));
+        return view('guru.edit', compact('guru'));
     }
 
     /**
@@ -81,18 +81,18 @@ class guruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buku $buku)
+    public function update(Request $request, Guru $guru)
     {
         $request->validate([
-            'judul'        => 'required',
-            'tahun_terbit' => 'required',
+            'nama'        => 'required',
+            'mengajar' => 'required',
         ]);
 
-        $buku->update($request->all());
+        $guru->update($request->all());
 
         return redirect()
-                ->route('buku.index')
-                ->with('success','Buku updated successfully');
+                ->route('guru.index')
+                ->with('success','guru updated successfully');
     }
 
     /**
@@ -101,11 +101,11 @@ class guruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buku $buku)
+    public function destroy(Guru $guru)
     {
-        $buku->delete();
+        $guru->delete();
 
         return redirect()->route('buku.index')
-                ->with('success','Buku deleted successfully');
+                ->with('success','Guru deleted successfully');
     }
 }

@@ -3,39 +3,44 @@
 @section('content')
 
 <head>
-    <title>Guru</title>
+    <title>Kelas</title>
 </head>
 <table style="border: solid 1px; width: 50%; font-size: 2cm" >
     <thead>
         <th scope = "col" >Id</ th >
-        <th scope = "col" >Nama</ th >
-        <th scope = "col" >Mengajar</ th >
+        <th scope = "col" >Id_Siswa</ th >
+        <th scope = "col" >Id_Guru</ th >
     </thead>
     <tbody>
         <tr>
             <td>1</td>
-            <td>Ade</td>
-            <td>Matematika</td>
+            <td>2</td>
+            <td>1</td>
         </tr>    
         
-        @foreach ($guru as $guru)
+        <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>    
+        @foreach ($kelas as $kelas)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $guru->id }}</td>
-                <td>{{ $guru->nama }}</td>
+                <td>{{ $kelas->id }}</td>
+                <td>{{ $kelas->id_siswa }}</td>
                 <td>
-                    <form action="{{ route('guru.destroy', $guru->id) }}" method="POST">
+                    <form action="{{ route('kelas.destroy', $kelas->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                            <a href="{{ route('guru.show', $guru->id) }}">
+                            <a href="{{ route('kelas.show', $kelas->id) }}">
                                 Lihat
                             </a>
 
-                            <a href="{{ route('guru.edit', $guru->id) }}">
+                            <a href="{{ route('kelas.edit', $kelas->id) }}">
                                 Edit
                             </a>
 
-                            <button onclick="return confirm('Apakah Anda yakin ingin menghapus data #{{ $guru->id }}?')">
+                            <button onclick="return confirm('Apakah Anda yakin ingin menghapus data #{{ $kelas->id }}?')">
                                 Hapus
                             </button>
                         </div>

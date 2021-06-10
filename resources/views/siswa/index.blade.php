@@ -3,39 +3,44 @@
 @section('content')
 
 <head>
-    <title>Guru</title>
+    <title>Siswa</title>
 </head>
 <table style="border: solid 1px; width: 50%; font-size: 2cm" >
     <thead>
         <th scope = "col" >Id</ th >
         <th scope = "col" >Nama</ th >
-        <th scope = "col" >Mengajar</ th >
+        <th scope = "col" >Alamat</ th >
     </thead>
     <tbody>
         <tr>
             <td>1</td>
-            <td>Ade</td>
-            <td>Matematika</td>
+            <td>Zam</td>
+            <td>Kalimantan</td>
         </tr>    
         
-        @foreach ($guru as $guru)
+        <tr>
+            <td>2</td>
+            <td>Arif</td>
+            <td>Sidoarjo</td>
+        </tr>    
+        @foreach ($siswa as $siswa)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $guru->id }}</td>
-                <td>{{ $guru->nama }}</td>
+                <td>{{ $siswa->id }}</td>
+                <td>{{ $siswa->nama }}</td>
                 <td>
-                    <form action="{{ route('guru.destroy', $guru->id) }}" method="POST">
+                    <form action="{{ route('siswa.destroy', $siswa->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                            <a href="{{ route('guru.show', $guru->id) }}">
+                            <a href="{{ route('siswa.show', $siswa->id) }}">
                                 Lihat
                             </a>
 
-                            <a href="{{ route('guru.edit', $guru->id) }}">
+                            <a href="{{ route('siswa.edit', $siswa->id) }}">
                                 Edit
                             </a>
 
-                            <button onclick="return confirm('Apakah Anda yakin ingin menghapus data #{{ $guru->id }}?')">
+                            <button onclick="return confirm('Apakah Anda yakin ingin menghapus data #{{ $siswa->id }}?')">
                                 Hapus
                             </button>
                         </div>
